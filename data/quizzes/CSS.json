@@ -1,0 +1,90 @@
+{
+  "title": "Basic CSS quiz",
+  "questions": [
+    {
+      "questionID": 1,
+      "question": "The acronym CSS means?",
+      "options": [
+        "Creative Style Sheets",
+        "Cascading Style Sheets",
+        "Computer Style Sheets",
+        "Colorful Style Sheets"
+      ],
+      "answer": "Cascading Style Sheets"
+    },
+    {
+      "questionID": 2,
+      "question": "CSS style that is used to style a specific HTML element using style attribute",
+      "options": ["Inline CSS", "External CSS", "Internal CSS", "No CSS"],
+      "answer": "Inline CSS"
+    },
+    {
+      "questionID": 3,
+      "question": "What is the selector that selects everything in the document?",
+      "options": [
+        "Class Selector",
+        "ID Selector",
+        "HTML Selector",
+        "Universal Selector"
+      ],
+      "answer": "Universal Selector"
+    },
+    {
+      "questionID": 4,
+      "question": "The CSS unit relative to the root element’s font size",
+      "options": ["rem", "em", "px", "vh"],
+      "answer": "rem"
+    },
+    {
+      "questionID": 5,
+      "question": "CSS style that is used to style a specific HTML page using <style> tag",
+      "options": ["Inline CSS", "External CSS", "Internal CSS", "No CSS"],
+      "answer": "Internal CSS"
+    },
+    {
+      "questionID": 6,
+      "question": "This selects elements with a specific class attribute",
+      "options": [
+        "Class Selector",
+        "ID Selector",
+        "HTML Selector",
+        "Universal Selector"
+      ],
+      "answer": "Class Selector"
+    },
+    {
+      "questionID": 7,
+      "question": "CSS style that is used to style an entire website with the use of a .css file",
+      "options": ["Inline CSS", "External CSS", "Internal CSS", "No CSS"],
+      "answer": "External CSS"
+    },
+    {
+      "questionID": 8,
+      "question": "This is an absolute unit used sparingly for fixed elements",
+      "options": ["px", "em", "%", "rem"],
+      "answer": "px"
+    },
+    {
+      "questionID": 9,
+      "question": "Which of the following statements is an advantage of using CSS?",
+      "options": [
+        "Easier to maintain",
+        "Cross-browser issues",
+        "Confusion due to many CSS levels",
+        "No need for HTML"
+      ],
+      "answer": "Easier to maintain"
+    },
+    {
+      "questionID": 10,
+      "question": "Which of the following statements is not an advantage of using CSS?",
+      "options": [
+        "Website speed",
+        "Consistent in design",
+        "Time-saving",
+        "Cross-browser issues"
+      ],
+      "answer": "Cross-browser issues"
+    }
+  ]
+}
