@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  background-color: #fdffef;
+}
+
+#app-title {
+  margin-top: 2rem;
+}
+
+.carousel-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.prev-arrow {
+  transform: scaleX(-1);
+}
+
+.carousel-prev,
+.carousel-next {
+  background: none;
+  border-style: none;
+  cursor: pointer;
+}
+
+.carousel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 1rem;
+}
+
+.upload-section {
+  margin-top: 2rem;
+}
+
+.file-upload {
+  position: relative;
+  display: inline-block;
+}
+
+.upload-label {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #50c878;
+  cursor: pointer;
+  border: none;
+  color: white;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.file-upload input[type="file"] {
+  display: none;
+}
+
+#uploadBtn {
+  font-family: "Poppins";
+  padding: 6px 12px;
+  cursor: pointer;
+  border: none;
+  background-color: #50c878;
+  color: white;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.upload-label,
+#uploadBtn {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.upload-label:hover,
+#uploadBtn:hover {
+  background-color: #3d9f5e;
+}
+
+.card {
+  width: 250px;
+  min-width: 250px;
+  height: 200px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 1rem;
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #333;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.start-btn {
+  font-family: inherit;
+  margin-top: 12px;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: #50c878;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.start-btn:hover {
+  background-color: #3d9f5e;
+}
