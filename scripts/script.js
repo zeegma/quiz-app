@@ -2,6 +2,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const carousel = document.querySelector(".carousel");
   const jsonUploadInput = document.getElementById("jsonUpload");
   const uploadForm = document.querySelector("form");
+  const fileNameDisplay = document.getElementById("fileNameDisplay");
+
+  jsonUploadInput.addEventListener("change", () => {
+    const file = jsonUploadInput.files[0];
+    if (file) {
+      fileNameDisplay.textContent = `Selected file: ${file.name}`;
+    } else {
+      fileNameDisplay.textContent = "";
+    }
+  });
 
   // Add quiz card to carousel
   function addQuizCard(quiz) {
@@ -47,6 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const uploaded = stored ? JSON.parse(stored) : [];
         uploaded.push(quiz);
         localStorage.setItem("uploadedQuizzes", JSON.stringify(uploaded));
+        alert("Upload successful!");
+
+        jsonUploadInput.value = "";
+        fileNameDisplay.value = "";
       } catch (err) {
         alert("Invalid JSON file.");
       }
@@ -54,13 +68,17 @@ document.addEventListener("DOMContentLoaded", () => {
     reader.readAsText(file);
   });
 
-  // Handle carousel navigation
-  document.querySelector(".carousel-prev").addEventListener("click", () => {
-    carousel.scrollBy({ left: -300, behavior: "smooth" });
+  // Handle carousel navigation (To be changed, need to loop)
+  document.querySelector(".carousel-next").addEventListener("click", () => {
+    const firstCard = carousel.firstElementChild;
+    carousel.appendChild(firstCard);
+    updateActiveCard();
   });
 
-  document.querySelector(".carousel-next").addEventListener("click", () => {
-    carousel.scrollBy({ left: 300, behavior: "smooth" });
+  document.querySelector(".carousel-prev").addEventListener("click", () => {
+    const lastCard = carousel.lastElementChild;
+    carousel.insertBefore(lastCard, carousel.firstElementChild);
+    updateActiveCard();
   });
 
   // Handle quiz start
