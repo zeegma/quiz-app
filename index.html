@@ -13,11 +13,10 @@
     <title>Quiz App</title>
   </head>
   <body>
-    <header>
-      <h1 id="app-title">Quiz App</h1>
-    </header>
-
-    <main>
+    <main class="home-main">
+      <header>
+        <h1 id="app-title">Quiz App</h1>
+      </header>
       <section class="carousel-section">
         <!-- Insert prev and next arrows -->
         <button class="carousel-prev">
@@ -30,13 +29,17 @@
       </section>
 
       <section class="upload-section">
-        <form>
+        <form id="uploadForm">
           <div class="file-upload">
             <label for="jsonUpload" class="upload-label"
               >Choose a JSON file</label
             >
             <input type="file" id="jsonUpload" accept=".json" />
           </div>
+          <span
+            id="fileNameDisplay"
+            style="display: block; margin-top: 0.5rem; font-weight: 500"
+          ></span>
 
           <button id="uploadBtn" type="submit">Upload quiz</button>
         </form>
