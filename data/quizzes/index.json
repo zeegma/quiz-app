@@ -1,5 +1,5 @@
 [
-  { "title": "Basic CSS Quiz", "file": "data/quizzes/CSS.json" },
-  { "title": "Frameworks", "file": "data/quizzes/Framework.json" },
-  { "title": "HTML", "file": "data/quizzes/HTML.json" }
+  { "file": "CSS.json", "title": "Basic CSS Quiz" },
+  { "file": "Frameworks.json", "title": "Frameworks" },
+  { "file": "HTML.json", "title": "HTML" }
 ]
