@@ -54,3 +54,52 @@ header {
     font-size: 24px;
     cursor: pointer;
 }
+
+/* Score (like the main part) */
+.score-container {
+    background: linear-gradient(to bottom, var(--primary-color), var(--primary-hover));
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    -webkit-border-radius: 0 0 var(--border-radius) var(--border-radius);
+    -moz-border-radius: 0 0 var(--border-radius) var(--border-radius);
+    -ms-border-radius: 0 0 var(--border-radius) var(--border-radius);
+    -o-border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.score-circle {
+    background-color: var(--card-bg);
+    border-radius: 50%;
+    width: 210px;
+    height: 210px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: -10px 0 20px;
+    box-shadow: var(--shadow);
+}
+
+.score-circle h2 {
+    color: var(--text-color);
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: -20px;
+}
+
+.score-value {
+    color: var(--primary-color);
+    font-size: 100px;
+    font-weight: 700;
+}
+
+.score-message {
+    color: var(--text-color);
+    font-size: 14px;
+    margin-top: -20px;
+}
