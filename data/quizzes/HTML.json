@@ -1,0 +1,116 @@
+{
+    "id": "html-basics",
+    "title": "Basic HTML quiz",
+    "questions": [
+        {
+            "questionID": 1,
+            "question": "What is the meaning of HTML?",
+            "answer": "Hypertext Markup Language",
+            "options": [
+                "Hypertext Markup Language",
+                "Hypersensitivity Modular Language",
+                "Holistic Masking Language",
+                "None of the options"
+            ]   
+        },
+        {
+            "questionID": 2,
+            "question": "Which HTML tag is used to define an unordered list?",
+            "answer": "<ul>",
+            "options": [
+                "<ol>",
+                "<ul>",
+                "<list>",
+                "<li>"
+            ]
+        },
+        {
+            "questionID": 3,
+            "question": "What does the <a> tag in HTML define?",
+            "answer": "A hyperlink",
+            "options": [
+                "An anchor to a document",
+                "A heading",
+                "A hyperlink",
+                "An image"
+            ]
+        },
+        {
+            "questionID": 4,
+            "question": "Which tag is used to insert an image in HTML?",
+            "answer": "<img>",
+            "options": [
+                "<picture>",
+                "<image>",
+                "<img>",
+                "<src>"
+            ]
+        },
+        {
+            "questionID": 5,
+            "question": "What attribute is used to provquestionIDe alternative text for an image?",
+            "answer": "alt",
+            "options": [
+                "src",
+                "alt",
+                "title",
+                "description"
+            ]
+        },
+        {
+            "questionID": 6,
+            "question": "Which tag is used to create a line break in HTML?",
+            "answer": "<br>",
+            "options": [
+                "<lb>",
+                "<break>",
+                "<br>",
+                "<newline>"
+            ]
+        },
+        {
+            "questionID": 7,
+            "question": "What is the correct HTML element for inserting a line horizontally across the page?",
+            "answer": "<hr>",
+            "options": [
+                "<line>",
+                "<breakline>",
+                "<hr>",
+                "<divquestionIDer>"
+            ]
+        },
+        {
+            "questionID": 8,
+            "question": "Which tag defines the largest heading in HTML?",
+            "answer": "<h1>",
+            "options": [
+                "<head>",
+                "<h6>",
+                "<h1>",
+                "<title>"
+            ]
+        },
+        {
+            "questionID": 9,
+            "question": "How do you create a checkbox in HTML?",
+            "answer": "<input type=\"checkbox\">",
+            "options": [
+                "<checkbox>",
+                "<check>",
+                "<input checkbox>",
+                "<input type=\"checkbox\">"
+            ]
+        },
+        {
+            "questionID": 10,
+            "question": "Which HTML attribute specifies the URL of a link?",
+            "answer": "href",
+            "options": [
+                "src",
+                "link",
+                "href",
+                "url"
+            ]
+        }
+    ]
+}   
