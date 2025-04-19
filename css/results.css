@@ -3,6 +3,7 @@
     --primary-hover: #3d9f5e;
     --secondary-color: #4a90e2;
     --wrong-color: #ef4444;
+    --review-questions-button: #ca8a04;
     --text-color: #333;
     --background-color: #f6f9fc;
     --card-bg: #ffffff;
@@ -151,4 +152,56 @@ header {
 
 .wrong-value {
     color: var(--wrong-color); 
+}
+
+/* Action buttons style */
+.action-buttons {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: center;
+    gap: 40px; 
+    padding: 0 20px;
+    margin-bottom: 100px;
+}
+
+.action-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-color);
+    font-size: 13px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.button-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+}
+
+.review-button .button-icon {
+    background-color: var(--review-questions-button); 
+}
+
+.home-button .button-icon {
+    background-color: var(--secondary-color);
+}
+
+.retake-button .button-icon {
+    background-color: var(--primary-color);
+}
+
+.button-icon img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    -webkit-filter: brightness(0) invert(1);
 }
