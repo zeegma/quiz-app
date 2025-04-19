@@ -1,3 +1,5 @@
+
+// The "DOMContentLoaded" makes sure that every element is loaded before doing any actions.
 document.addEventListener("DOMContentLoaded", () => {
   const quizContainer = document.getElementById("quiz-container");
   const loaderContainer = document.getElementById("loader-container");
@@ -10,76 +12,52 @@ document.addEventListener("DOMContentLoaded", () => {
   const prevBtn = document.getElementById("prev-btn");
   const nextBtn = document.getElementById("next-btn");
 
-  let quizData = null; // Hold data containing the quiz questions and options (e.g. HTML.json)
+  let quizData = null; // Hold data containing the quiz questions and options
   let currentQuestion = 0; // Tracks current question
   let userAnswers = []; // Stores answers selected by the user for each question
 
-  // Quiz info retrieval - Fetchess quiz metadata from sessionStorage
-  let quizInfo = null;
+  // Fetch quiz data from sessionStorage
   try {
-    const storedQuizInfo = sessionStorage.getItem("quizData");
-    if (!storedQuizInfo)
-      throw new Error("No quiz info found in sessionStorage.");
-    quizInfo = JSON.parse(storedQuizInfo);
+    const storedQuizData = sessionStorage.getItem("quizData");
+    console.log(storedQuizData);
+    if (!storedQuizData)
+      throw new Error("No quiz data found in sessionStorage.");
+    
+    quizData = JSON.parse(storedQuizData);
+    
+    if (!quizData.title || !quizData.questions || !Array.isArray(quizData.questions))
+      throw new Error("Invalid quiz data format in sessionStorage.");
+    
+    // Initialize the quiz
+    initializeQuiz();
 
-    if (!quizInfo.file || !quizInfo.title)
-      throw new Error("Invalid quiz info format in sessionStorage.");
   } catch (error) {
     console.error(error);
     loaderContainer.style.display = "none";
     errorContainer.style.display = "flex";
-    errorContainer.textContent = `Error loading quiz info: ${error.message}`;
-    return;
+    errorContainer.textContent = `Error loading quiz data: ${error.message}`;
   }
 
-  quizTitle.textContent = quizInfo.title;
+  // Initialize the quiz segment
+  function initializeQuiz() {
+    quizTitle.textContent = quizData.title;
+    userAnswers = new Array(quizData.questions.length).fill(null);
 
-  // Fetch the quiz questions stored in the JSON file
-  const xhttp = new XMLHttpRequest();
-  xhttp.open("GET", quizInfo.file, true);
-  xhttp.onreadystatechange = function () {
-    if (xhttp.readyState === 4) {
-      if (xhttp.status === 200) {
-        try {
-          quizData = JSON.parse(xhttp.responseText);
+    // Create navigation buttons for each question
+    quizData.questions.forEach((_, index) => {
+      const btn = document.createElement("button");
+      btn.classList.add("question-btn");
+      btn.textContent = index + 1;
+      btn.addEventListener("click", () => goToQuestion(index));
+      questionNav.appendChild(btn);
+    });
 
-          if (
-            !quizData ||
-            !quizData.questions ||
-            !Array.isArray(quizData.questions)
-          ) {
-            throw new Error("Invalid quiz data format");
-          }
-
-          userAnswers = new Array(quizData.questions.length).fill(null);
-
-          // Loops through each question
-          quizData.questions.forEach((_, index) => {
-            const btn = document.createElement("button");
-            btn.classList.add("question-btn");
-            btn.textContent = index + 1;
-            btn.addEventListener("click", () => goToQuestion(index));
-            questionNav.appendChild(btn);
-          });
-
-          // Loading
-          loaderContainer.style.display = "none";
-          quizContainer.style.display = "flex";
-          renderQuestion();
-          updateNavButtons();
-        } catch (error) {
-          loaderContainer.style.display = "none";
-          errorContainer.style.display = "flex";
-          errorContainer.textContent = `Error parsing quiz: ${error.message}`;
-        }
-      } else {
-        loaderContainer.style.display = "none";
-        errorContainer.style.display = "flex";
-        errorContainer.textContent = `Error loading quiz: ${xhttp.statusText}`;
-      }
-    }
-  };
-  xhttp.send();
+    // Show quiz and render first question
+    loaderContainer.style.display = "none";
+    quizContainer.style.display = "flex";
+    renderQuestion();
+    updateNavButtons();
+  }
 
   // Rendering current question and its options
   function renderQuestion() {
@@ -109,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
       currentQuestion === quizData.questions.length - 1 ? "FINISH" : "NEXT";
   }
 
-  // Navigate to a specific question by its index (for the rerendering of question when the number is clicked)
+  // Navigate to a specific question by its index
   function goToQuestion(index) {
     currentQuestion = index;
     renderQuestion();
@@ -154,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentQuestion < quizData.questions.length - 1) {
       currentQuestion++;
 
-      // To be removed (For checking langs if calculation works 150-153)
+      // To be removed (For checking langs if calculation works)
       const currentScore = calculateScore();
       console.log(
         `Current Score: ${currentScore}/${quizData.questions.length}`
