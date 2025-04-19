@@ -205,3 +205,25 @@ header {
     filter: brightness(0) invert(1);
     -webkit-filter: brightness(0) invert(1);
 }
+
+
+/* Hover effects */
+.action-button:hover .button-icon {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+    filter: brightness(1.2);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+
+.back-button:hover {
+    transform: scale(1.16);
+    transition: transform 0.2s ease;
+    filter: brightness(1.2);
+    -webkit-transform: scale(1.16);
+    -moz-transform: scale(1.16);
+    -ms-transform: scale(1.16);
+    -o-transform: scale(1.16);
+}
