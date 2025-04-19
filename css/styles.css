@@ -2,9 +2,13 @@
   --primary-color: #50c878;
   --primary-hover: #3d9f5e;
   --secondary-color: #4a90e2;
-  --text-color: #333;
-  --background-color: #f6f9fc;
+  --text-color: #272727;
+  --text-color2: #f6f9fc;
+  --background-color: #fcfffd;
+  --sidebar-bg: #061f0f;
   --card-bg: #ffffff;
+  --border-color: #ccc;
+  --hover-color: #b7d8fd;
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   --border-radius: 12px;
 }

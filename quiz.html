@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/quiz.css" />
+    <title>Quiz App</title>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <h1 class="sidebar-title">Quiz App</h1>
+      <h2 class="sidebar-header">Questions</h2>
+      <div class="question-nav" id="question-nav">
+        <!-- Question navigation buttons will be generated here -->
+      </div>
+    </aside>
+
+    <main class="quiz-content">
+      <!-- Displays the quiz -->
+      <div id="loader-container" class="loader-container">
+        <div class="loader"></div>
+      </div>
+
+      <!-- Fallback -->
+      <div id="error-container" class="error-container">
+        <div class="error-message">Failed to load quiz data.</div>
+        <button class="home-btn" onclick="window.location.href='index.html'">
+          Back to Home
+        </button>
+      </div>
+
+      <!-- Quiz content -->
+      <div id="quiz-container">
+        <h1 class="quiz-title" id="quiz-title">Quiz Title</h1>
+
+        <div class="quiz-main" id="quiz-main">
+          <div class="question-container">
+            <div class="question-header">
+              <span class="question-num"
+                >Question <span id="question-number">1</span>:</span
+              >
+              <span class="question-text" id="question-text"
+                >The question text will appear here</span
+              >
+            </div>
+
+            <div class="options-container" id="options-container">
+              <!-- Options will be generated here -->
+            </div>
+          </div>
+
+          <div class="navigation-buttons">
+            <button class="nav-btn" id="prev-btn">PREV</button>
+            <button class="nav-btn" id="next-btn">NEXT</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="./scripts/quiz.js"></script>
+  </body>
+</html>

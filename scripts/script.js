@@ -1,3 +1,5 @@
+
+// The "DOMContentLoaded" makes sure that every element is loaded before doing any actions.
 document.addEventListener("DOMContentLoaded", () => {
   const carousel = document.querySelector(".carousel");
   const jsonUploadInput = document.getElementById("jsonUpload");
@@ -9,8 +11,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const errorMessage = document.getElementById("errorMessage");
   const errorText = document.getElementById("errorText");
 
+  // Handle file selection for upload
   jsonUploadInput.addEventListener("change", () => {
+
+    // Access the uploaded file and store to var file
     const file = jsonUploadInput.files[0];
+
     if (file) {
       fileNameDisplay.textContent = `Selected file: ${file.name}`;
       uploadBtn.disabled = false;
@@ -20,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // If user decideds to remove file, remove file and reset UI
   removeFileBtn.addEventListener("click", () => {
     jsonUploadInput.value = "";
     fileNameDisplay.textContent = "";
@@ -28,11 +35,14 @@ document.addEventListener("DOMContentLoaded", () => {
     errorMessage.style.display = "none";
   });
 
+  // Add a quiz card to the carousel
   function addQuizCard(quiz) {
     const card = document.createElement("div");
     card.className = "card";
+    const questionCount = quiz.questions ? quiz.questions.length : 0;
     card.innerHTML = `
       <h2>${quiz.title}</h2>
+      <p>${questionCount} Question${questionCount !== 1 ? "s" : ""}</p>
       <button class="start-btn" data-quiz='${JSON.stringify(
         quiz
       )}'>Start</button>
@@ -40,32 +50,69 @@ document.addEventListener("DOMContentLoaded", () => {
     carousel.appendChild(card);
   }
 
-  // Load default quizzes from static JSON
+  
+  // The following loads the premade quizzes from index.json.
+  // The uploaded JSON files won't be needing this as these are just for sample purposes.
+  
   const xhttp = new XMLHttpRequest();
+
+  // Open the index.json file and load the different files declared in the json.
   xhttp.open("GET", "./data/quizzes/index.json", true);
-  xhttp.onreadystatechange = function () {
-    if (xhttp.readyState === 4) {
-      if (xhttp.status === 200) {
+
+  xhttp.onload = function() {
+    if (xhttp.status === 200) {
         try {
           const quizzes = JSON.parse(xhttp.responseText);
-          quizzes.forEach(addQuizCard);
-          console.log("Sucessful. Status:", xhttp.status);
+          for (let i = 0; i < quizzes.length; i++) {
+            const quizMeta = quizzes[i];
+            
+            // Create a new XMLHttpRequest for each quiz file
+            const quizRequest = new XMLHttpRequest();
+            
+            // Using synchronous request (not recommended for production, but simpler)
+            quizRequest.open("GET", quizMeta.file, false);
+            
+            try {
+              // Send the request
+              quizRequest.send();
+              
+              if (quizRequest.status === 200) {
+                // Parse the quiz data
+                const quizData = JSON.parse(quizRequest.responseText);
+                
+                // Merge the metadata with the quiz data
+                const fullQuiz = { ...quizMeta, ...quizData };
+                
+                // Add the quiz card to the carousel
+                addQuizCard(fullQuiz);
+              } else {
+                console.error(`Failed to load quiz from ${quizMeta.file}. Status: ${quizRequest.status}`);
+              }
+            } catch (err) {
+              console.error(`Error loading quiz from ${quizMeta.file}:`, err);
+            }
+          }
+
+          console.log("Successfully loaded quizzes. Status:", xhttp.status);
         } catch (err) {
           console.error("Error parsing quiz data:", err);
         }
       } else {
         console.error("Failed to load quizzes. Status:", xhttp.status);
       }
-    }
-  };
+  }
+  // Executes request. If successful, perform the function in the onload
   xhttp.send();
 
-  // Load quizzes from localStorage
+  // Load quizzes from localStorage (uploaded quizzes)
   const storedQuizzes = localStorage.getItem("uploadedQuizzes");
+
+  // If there are stored quizzes, proceed to parse and add them as cards.
   if (storedQuizzes) {
     JSON.parse(storedQuizzes).forEach(addQuizCard);
   }
 
+  // Handle quiz upload
   uploadForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const file = jsonUploadInput.files[0];
@@ -97,6 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
     reader.readAsText(file);
   });
 
+  // Carousel navigation (Next and Previous buttons)
   document.querySelector(".carousel-next").addEventListener("click", () => {
     const firstCard = carousel.firstElementChild;
     if (firstCard) {
@@ -111,6 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Handle quiz card click to start the quiz
   carousel.addEventListener("click", (e) => {
     if (e.target.classList.contains("start-btn")) {
       const quiz = JSON.parse(e.target.getAttribute("data-quiz"));
