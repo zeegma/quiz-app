@@ -1,0 +1,116 @@
+{
+    "id": "http-protocols",
+    "title": "HTTP Protocols Quiz",
+    "questions": [
+        {
+            "questionID": 1,
+            "question": "What does HTTP stand for?",
+            "answer": "HyperText Transfer Protocol",
+            "options": [
+                "HyperText Transfer Protocol",
+                "HighText Transfer Process",
+                "Hyperlink Transfer Protocol",
+                "HyperText Transmission Protocol"
+            ]
+        },
+        {
+            "questionID": 2,
+            "question": "Which HTTP method is used to retrieve data from a server?",
+            "answer": "GET",
+            "options": [
+                "GET",
+                "POST",
+                "PUT",
+                "DELETE"
+            ]
+        },
+        {
+            "questionID": 3,
+            "question": "Which HTTP method is typically used when submitting form data?",
+            "answer": "POST",
+            "options": [
+                "POST",
+                "GET",
+                "PATCH",
+                "FETCH"
+            ]
+        },
+        {
+            "questionID": 4,
+            "question": "What does the status code 404 indicate?",
+            "answer": "Resource not found",
+            "options": [
+                "OK",
+                "Server error",
+                "Resource not found",
+                "Request timeout"
+            ]
+        },
+        {
+            "questionID": 5,
+            "question": "Which status code means the request was successful?",
+            "answer": "200",
+            "options": [
+                "200",
+                "301",
+                "403",
+                "500"
+            ]
+        },
+        {
+            "questionID": 6,
+            "question": "What is the purpose of the HTTPS protocol?",
+            "answer": "To provide secure communication over HTTP",
+            "options": [
+                "To make requests faster",
+                "To compress data",
+                "To provide secure communication over HTTP",
+                "To support file uploads"
+            ]
+        },
+        {
+            "questionID": 7,
+            "question": "Which HTTP method is idempotent?",
+            "answer": "PUT",
+            "options": [
+                "POST",
+                "PUT",
+                "CONNECT",
+                "PATCH"
+            ]
+        },
+        {
+            "questionID": 8,
+            "question": "What is a common use of the HTTP HEAD method?",
+            "answer": "To retrieve headers without the response body",
+            "options": [
+                "To update a resource",
+                "To delete a resource",
+                "To retrieve headers without the response body",
+                "To create a new resource"
+            ]
+        },
+        {
+            "questionID": 9,
+            "question": "Which HTTP header is used to specify the type of data being sent?",
+            "answer": "Content-Type",
+            "options": [
+                "Accept",
+                "Content-Length",
+                "Content-Type",
+                "Authorization"
+            ]
+        },
+        {
+            "questionID": 10,
+            "question": "What does the 301 status code represent?",
+            "answer": "Moved Permanently",
+            "options": [
+                "Bad Request",
+                "Found",
+                "Moved Permanently",
+                "Internal Server Error"
+            ]
+        }
+    ]
+}
