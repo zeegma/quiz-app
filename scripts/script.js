@@ -34,8 +34,10 @@ document.addEventListener("DOMContentLoaded", () => {
   function addQuizCard(quiz) {
     const card = document.createElement("div");
     card.className = "card";
+    const questionCount = quiz.questions ? quiz.questions.length : 0;
     card.innerHTML = `
       <h2>${quiz.title}</h2>
+      <p>${questionCount} Question${questionCount !== 1 ? "s" : ""}</p>
       <button class="start-btn" data-quiz='${JSON.stringify(
         quiz
       )}'>Start</button>
@@ -51,7 +53,18 @@ document.addEventListener("DOMContentLoaded", () => {
       if (xhttp.status === 200) {
         try {
           const quizzes = JSON.parse(xhttp.responseText);
-          quizzes.forEach(addQuizCard);
+          quizzes.forEach((quizMeta) => {
+            fetch(quizMeta.file)
+              .then((res) => res.json())
+              .then((quizData) => {
+                const fullQuiz = { ...quizMeta, ...quizData }; // merge title + questions
+                addQuizCard(fullQuiz);
+              })
+              .catch((err) => {
+                console.error(`Failed to load quiz from ${quizMeta.file}`, err);
+              });
+          });
+
           console.log("Successfully loaded quizzes. Status:", xhttp.status);
         } catch (err) {
           console.error("Error parsing quiz data:", err);
