@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const errorMessage = document.getElementById("errorMessage");
   const errorText = document.getElementById("errorText");
 
+  // Handle file selection for upload
   jsonUploadInput.addEventListener("change", () => {
     const file = jsonUploadInput.files[0];
     if (file) {
@@ -20,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Remove file and reset UI
   removeFileBtn.addEventListener("click", () => {
     jsonUploadInput.value = "";
     fileNameDisplay.textContent = "";
@@ -28,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     errorMessage.style.display = "none";
   });
 
+  // Add a quiz card to the carousel
   function addQuizCard(quiz) {
     const card = document.createElement("div");
     card.className = "card";
@@ -40,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     carousel.appendChild(card);
   }
 
-  // Load default quizzes from static JSON
+  // Load quizzes from index.json
   const xhttp = new XMLHttpRequest();
   xhttp.open("GET", "./data/quizzes/index.json", true);
   xhttp.onreadystatechange = function () {
@@ -49,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
           const quizzes = JSON.parse(xhttp.responseText);
           quizzes.forEach(addQuizCard);
-          console.log("Sucessful. Status:", xhttp.status);
+          console.log("Successfully loaded quizzes. Status:", xhttp.status);
         } catch (err) {
           console.error("Error parsing quiz data:", err);
         }
@@ -60,12 +63,13 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   xhttp.send();
 
-  // Load quizzes from localStorage
+  // Load quizzes from localStorage (uploaded quizzes)
   const storedQuizzes = localStorage.getItem("uploadedQuizzes");
   if (storedQuizzes) {
     JSON.parse(storedQuizzes).forEach(addQuizCard);
   }
 
+  // Handle quiz upload
   uploadForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const file = jsonUploadInput.files[0];
@@ -97,6 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
     reader.readAsText(file);
   });
 
+  // Carousel navigation (Next and Previous buttons)
   document.querySelector(".carousel-next").addEventListener("click", () => {
     const firstCard = carousel.firstElementChild;
     if (firstCard) {
@@ -111,6 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Handle quiz card click to start the quiz
   carousel.addEventListener("click", (e) => {
     if (e.target.classList.contains("start-btn")) {
       const quiz = JSON.parse(e.target.getAttribute("data-quiz"));
