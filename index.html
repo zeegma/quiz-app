@@ -17,31 +17,63 @@
       <header>
         <h1 id="app-title">Quiz App</h1>
       </header>
-      <section class="carousel-section">
-        <!-- Insert prev and next arrows -->
-        <button class="carousel-prev">
-          <img src="./assets/arrow.svg" alt="prev" class="prev-arrow" />
-        </button>
-        <section class="carousel"><!-- Insert Cards --></section>
-        <button class="carousel-next">
-          <img src="./assets/arrow.svg" alt="next" class="next-arrow" />
-        </button>
-      </section>
+
+      <div class="carousel-container">
+        <section class="carousel-section">
+          <!-- Insert prev and next arrows -->
+          <button class="carousel-nav carousel-prev">
+            <img src="./assets/arrow.svg" alt="prev" class="prev-arrow" />
+          </button>
+          <div class="carousel-wrapper">
+            <section class="carousel"><!-- Insert Cards --></section>
+          </div>
+          <button class="carousel-nav carousel-next">
+            <img src="./assets/arrow.svg" alt="next" class="next-arrow" />
+          </button>
+        </section>
+      </div>
 
       <section class="upload-section">
-        <form id="uploadForm">
-          <div class="file-upload">
-            <label for="jsonUpload" class="upload-label"
-              >Choose a JSON file</label
-            >
-            <input type="file" id="jsonUpload" accept=".json" />
-          </div>
-          <span
-            id="fileNameDisplay"
-            style="display: block; margin-top: 0.5rem; font-weight: 500"
-          ></span>
+        <h2 class="upload-title">Add your own quiz!</h2>
 
-          <button id="uploadBtn" type="submit">Upload quiz</button>
+        <form id="uploadForm">
+          <div class="file-upload-container">
+            <div class="file-dropzone" id="file-dropzone">
+              <div class="file-upload">
+                <input type="file" id="jsonUpload" accept=".json" />
+                <p class="upload-text">
+                  Drag & drop a JSON file here or click to browse
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="fileDetails">
+            <div class="file-info">
+              <div class="file-info-content">
+                <p class="file-name" id="fileName"></p>
+              </div>
+              <button type="button" class="remove-file" id="removeFile">
+                Remove
+              </button>
+            </div>
+          </div>
+
+          <button class="upload" id="uploadBtn" type="submit" disabled>
+            <span id="uploadBtnText">Upload Quiz</span>
+            <span
+              class="spinner"
+              id="uploadSpinner"
+              style="display: none"
+            ></span>
+          </button>
+
+          <div class="status-message success-message" id="successMessage">
+            Quiz uploaded successfully!
+          </div>
+
+          <div class="status-message error-message" id="errorMessage">
+            <span id="errorText">Error uploading quiz.</span>
+          </div>
         </form>
       </section>
     </main>
