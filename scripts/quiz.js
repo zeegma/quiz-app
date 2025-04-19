@@ -170,4 +170,14 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "score.html";
     }
   });
+
+  document.addEventListener("click", (event) => {
+    const isOption = event.target.closest(".option");
+    if (!isOption) {
+      // Unselect current option
+      userAnswers[currentQuestion] = null;
+      renderQuestion();
+      updateNavButtons();
+    }
+  });
 });
