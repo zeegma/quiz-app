@@ -49,15 +49,15 @@ https://github.com/user-attachments/assets/eab827e6-efd6-4fee-98ce-d1c9f78dde2e
     </thead>
     <tbody>
       <tr>
-        <td style="text-align: center; padding: 10px;">
+        <td align="center">
           <img src="./assets/html.png" width="60"/><br/>
           HTML
         </td>
-        <td style="text-align: center; padding: 10px;">
+        <td align="center">
           <img src="./assets/css.png" width="60"/><br/>
           CSS
         </td>
-        <td style="text-align: center; padding: 10px;">
+        <td align="center">
           <img src="./assets/js.png" width="60"/><br/>
           JavaScript
         </td>
@@ -114,7 +114,6 @@ https://github.com/user-attachments/assets/eab827e6-efd6-4fee-98ce-d1c9f78dde2e
 
 ## License
 
-This project is licensed under the [Creative Commons Attribution-NoDerivatives 4.0 International](https://creativecommons.org/licenses/by-nd/4.0/) License.  
-See the [LICENSE](LICENSE) file for more information.
+This project is licensed under the [Creative Commons Attribution-NoDerivatives 4.0 International](https://creativecommons.org/licenses/by-nd/4.0/) License. See the [LICENSE](LICENSE) file for more information.
 
 <br>
