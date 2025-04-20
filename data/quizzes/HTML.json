@@ -48,7 +48,7 @@
         },
         {
             "questionID": 5,
-            "question": "What attribute is used to provquestionIDe alternative text for an image?",
+            "question": "What attribute is used to provide alternative text for an image?",
             "answer": "alt",
             "options": [
                 "src",
@@ -76,7 +76,7 @@
                 "<line>",
                 "<breakline>",
                 "<hr>",
-                "<divquestionIDer>"
+                "<div>"
             ]
         },
         {
