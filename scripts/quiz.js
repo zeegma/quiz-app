@@ -1,4 +1,3 @@
-
 // The "DOMContentLoaded" makes sure that every element is loaded before doing any actions.
 document.addEventListener("DOMContentLoaded", () => {
   const quizContainer = document.getElementById("quiz-container");
@@ -11,6 +10,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const optionsContainer = document.getElementById("options-container");
   const prevBtn = document.getElementById("prev-btn");
   const nextBtn = document.getElementById("next-btn");
+
+  // Add a message element to display warnings
+  const messageElement = document.createElement("div");
+  messageElement.classList.add("message");
+  messageElement.style.color = "#f44336";
+  messageElement.style.textAlign = "center";
+  messageElement.style.marginTop = "15px";
+  messageElement.style.fontWeight = "500";
+  messageElement.style.display = "none";
 
   let quizData = null; // Hold data containing the quiz questions and options
   let currentQuestion = 0; // Tracks current question
@@ -52,6 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
       questionNav.appendChild(btn);
     });
 
+    // Add the message element after the options container
+    optionsContainer.parentNode.insertBefore(messageElement, optionsContainer.nextSibling);
+
     // Show quiz and render first question
     loaderContainer.style.display = "none";
     quizContainer.style.display = "flex";
@@ -78,6 +89,8 @@ document.addEventListener("DOMContentLoaded", () => {
         userAnswers[currentQuestion] = index;
         renderQuestion();
         updateNavButtons();
+        // Hide any message when an option is selected
+        messageElement.style.display = "none";
       });
       optionsContainer.appendChild(optionDiv);
     });
@@ -92,6 +105,8 @@ document.addEventListener("DOMContentLoaded", () => {
     currentQuestion = index;
     renderQuestion();
     updateNavButtons();
+    // Hide any message when navigating to a different question
+    messageElement.style.display = "none";
   }
 
   // Updating the state of the navigation buttons
@@ -105,6 +120,26 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.classList.remove("answered");
       }
     });
+  }
+
+  // Check if all questions are answered
+  function allQuestionsAnswered() {
+    return userAnswers.every(answer => answer !== null);
+  }
+
+  // Find the first unanswered question
+  function findFirstUnansweredQuestion() {
+    return userAnswers.findIndex(answer => answer === null);
+  }
+
+  // Get a list of all unanswered questions
+  function getUnansweredQuestions() {
+    return userAnswers.reduce((acc, answer, index) => {
+      if (answer === null) {
+        acc.push(index + 1); // Add 1 to convert from 0-based to 1-based indexing
+      }
+      return acc;
+    }, []);
   }
 
   // Calculation
@@ -125,17 +160,38 @@ document.addEventListener("DOMContentLoaded", () => {
       currentQuestion--;
       renderQuestion();
       updateNavButtons();
+      // Hide any message when navigating to a different question
+      messageElement.style.display = "none";
     }
   });
 
   nextBtn.addEventListener("click", () => {
     if (currentQuestion < quizData.questions.length - 1) {
+      // Allow skipping questions - just move to the next
       currentQuestion++;
-
-      const currentScore = calculateScore();
       renderQuestion();
       updateNavButtons();
+      messageElement.style.display = "none";
     } else {
+      // User is trying to finish the quiz
+      // Check if all questions are answered before finishing
+      if (!allQuestionsAnswered()) {
+        const unansweredQuestions = getUnansweredQuestions();
+        
+        // Create a nicely formatted list of unanswered questions
+        let questionsList = unansweredQuestions.join(", ");
+        
+        // Add "and" before the last item if there are multiple unanswered questions
+        if (unansweredQuestions.length > 1) {
+          const lastIndex = questionsList.lastIndexOf(", ");
+          questionsList = questionsList.substring(0, lastIndex) + " and" + questionsList.substring(lastIndex + 1);
+        }
+        
+        messageElement.textContent = `Please answer all questions before submitting. Question${unansweredQuestions.length > 1 ? 's' : ''} ${questionsList} ${unansweredQuestions.length > 1 ? 'are' : 'is'} unanswered.`;
+        messageElement.style.display = "block";
+        return;
+      }
+
       const finalScore = calculateScore();
 
       sessionStorage.setItem("finalScore", finalScore);
