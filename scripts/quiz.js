@@ -132,20 +132,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentQuestion < quizData.questions.length - 1) {
       currentQuestion++;
 
-      // To be removed (For checking langs if calculation works)
       const currentScore = calculateScore();
-      console.log(
-        `Current Score: ${currentScore}/${quizData.questions.length}`
-      );
       renderQuestion();
       updateNavButtons();
     } else {
       const finalScore = calculateScore();
-      // To be removed (For checking langs if calculation works)
-      console.log(`Score: ${finalScore}/${quizData.questions.length}`);
+
       sessionStorage.setItem("finalScore", finalScore);
       sessionStorage.setItem("totalQuestions", quizData.questions.length);
-      window.location.href = "score.html";
+      sessionStorage.setItem("userAnswers", JSON.stringify(userAnswers));
+      window.location.href = "results.html";
     }
   });
 
