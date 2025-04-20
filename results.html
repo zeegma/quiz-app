@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/results.css" />
+    <title>Quiz Results</title>
+</head>
+<body>
+    <main>
+        <header>
+            <h1 class="header-title">Results</h1>
+            <button class="back-button">←</button>
+        </header>
+        
+        <div class="score-container">
+            
+        
+            <div class="score-circle">
+                <h2>Total Score</h2>
+                <div class="score-value" id="totalScore">10</div>
+                <p class="score-message" id="scoreMessage">Great work!</p>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-item">
+                <strong class="stat-value percentage-value" id="percentageScore">100%</strong>
+                <span>Percentage</span>
+            </div>
+            <div class="stat-item">
+                <strong class="stat-value total-value" id="totalQuestions">10</strong>
+                <span>Total Questions</span>
+            </div>
+            <div class="stat-item">
+                <strong class="stat-value correct-value" id="correctAnswers">10</strong>
+                <span>Correct</span>
+            </div>
+            <div class="stat-item">
+                <strong class="stat-value wrong-value" id="wrongAnswers">0</strong>
+                <span>Wrong</span>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="action-button review-button" id="reviewButton">
+                <div class="button-icon">
+                    <img src="./assets/review.svg" alt="review">
+                </div>
+                <span>Review Answer</span>
+            </button>
+            <button class="action-button home-button" id="homeButton">
+                <div class="button-icon">
+                    <img src="./assets/home.svg" alt="home">
+                </div>
+                <span>Back to Home</span>
+            </button>
+            <button class="action-button retake-button" id="retakeButton">
+                <div class="button-icon">
+                    <img src="./assets/retake.svg" alt="retake">
+                </div>
+                <span>Retake Quiz</span>
+            </button>
+        </div>
+    </main>
+</body>
+</html>

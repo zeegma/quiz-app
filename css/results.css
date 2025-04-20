@@ -1,0 +1,229 @@
+:root {
+    --primary-color: #50c878;
+    --primary-hover: #3d9f5e;
+    --secondary-color: #4a90e2;
+    --wrong-color: #ef4444;
+    --review-questions-button: #ca8a04;
+    --text-color: #333;
+    --background-color: #f6f9fc;
+    --card-bg: #ffffff;
+    --sidebar-bg: #e0e0e0;
+    --borger-color: #ccc;
+    --hover-color: #bcd8f8;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --border-radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+/* Main area for scores, stats, and action buttons */
+main {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Title and back button */
+header {
+    background: var(--primary-color);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Score (like the main part) */
+.score-container {
+    background: linear-gradient(to bottom, var(--primary-color), var(--primary-hover));
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    -webkit-border-radius: 0 0 var(--border-radius) var(--border-radius);
+    -moz-border-radius: 0 0 var(--border-radius) var(--border-radius);
+    -ms-border-radius: 0 0 var(--border-radius) var(--border-radius);
+    -o-border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.score-circle {
+    background-color: var(--card-bg);
+    border-radius: 50%;
+    width: 210px;
+    height: 210px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: -10px 0 20px;
+    box-shadow: var(--shadow);
+}
+
+.score-circle h2 {
+    color: var(--text-color);
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: -20px;
+}
+
+.score-value {
+    color: var(--primary-color);
+    font-size: 100px;
+    font-weight: 700;
+}
+
+.score-message {
+    color: var(--text-color);
+    font-size: 14px;
+    margin-top: -20px;
+}
+
+/* Stats for breakdown of score */
+.stats-container {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 10px; 
+    margin: -20px 50px 20px;
+    box-shadow: var(--shadow);
+    position: relative;
+    z-index: 10;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.stat-item span {
+    font-size: 18px;
+}
+
+.stat-value {
+    font-size: 30px;
+    font-weight: 610;
+    margin-bottom: -5px;
+}
+
+.percentage-value {
+    color: var(--secondary-color);
+}
+
+.total-value {
+    color: var(--secondary-color);
+}
+
+.correct-value {
+    color: var(--primary-color);
+}
+
+.wrong-value {
+    color: var(--wrong-color); 
+}
+
+/* Action buttons style */
+.action-buttons {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: center;
+    gap: 40px; 
+    padding: 0 20px;
+    margin-bottom: 100px;
+}
+
+.action-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-color);
+    font-size: 13px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.button-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+}
+
+.review-button .button-icon {
+    background-color: var(--review-questions-button); 
+}
+
+.home-button .button-icon {
+    background-color: var(--secondary-color);
+}
+
+.retake-button .button-icon {
+    background-color: var(--primary-color);
+}
+
+.button-icon img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    -webkit-filter: brightness(0) invert(1);
+}
+
+
+/* Hover effects */
+.action-button:hover .button-icon {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+    filter: brightness(1.2);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+
+.back-button:hover {
+    transform: scale(1.16);
+    transition: transform 0.2s ease;
+    filter: brightness(1.2);
+    -webkit-transform: scale(1.16);
+    -moz-transform: scale(1.16);
+    -ms-transform: scale(1.16);
+    -o-transform: scale(1.16);
+}
