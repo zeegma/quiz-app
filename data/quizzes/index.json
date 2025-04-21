@@ -1,0 +1,4 @@
+[
+  { "file": "../data/quizzes/CSS.json", "title": "Basic CSS Quiz" },
+  { "file": "../data/quizzes/HTML.json", "title": "HTML" }
+]

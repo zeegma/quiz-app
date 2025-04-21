@@ -1,0 +1,25 @@
+.option {
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-weight: 500;
+    border: 2px solid #ccc;
+    pointer-events: none;   
+  }
+  
+  .selected-correct {
+    background-color: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+  }
+  
+  .selected-wrong {
+    background-color: #f8d7da;
+    border-color: #dc3545;
+    color: #721c24;
+  }
+  
+  .correct {
+    border: 2px dashed #28a745;
+  }
+  

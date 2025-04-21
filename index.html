@@ -3,7 +3,76 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
     <title>Quiz App</title>
   </head>
-  <body></body>
+  <body>
+    <main class="home-main">
+      <header>
+        <h1 id="app-title">Quiz App</h1>
+      </header>
+
+      <div class="carousel-container">
+        <section class="carousel-section">
+          <!-- Insert prev and next arrows -->
+          <button class="carousel-nav carousel-prev">
+            <img src="./assets/arrow.svg" alt="prev" class="prev-arrow" />
+          </button>
+          <div class="carousel-wrapper">
+            <section class="carousel"><!-- Insert Cards --></section>
+          </div>
+          <button class="carousel-nav carousel-next">
+            <img src="./assets/arrow.svg" alt="next" class="next-arrow" />
+          </button>
+        </section>
+      </div>
+
+      <section class="upload-section">
+        <h2 class="upload-title">Add your own quiz!</h2>
+
+        <form id="uploadForm">
+          <div class="file-upload-container">
+            <div class="file-dropzone" id="file-dropzone">
+              <div class="file-upload">
+                <input type="file" id="jsonUpload" accept=".json" />
+                <p class="upload-text">
+                  Drag & drop a JSON file here or click to browse
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="fileDetails">
+            <div class="file-info">
+              <div class="file-info-content">
+                <p class="file-name" id="fileName"></p>
+              </div>
+              <button type="button" class="remove-file" id="removeFile">
+                Remove
+              </button>
+            </div>
+          </div>
+
+          <button class="upload" id="uploadBtn" type="submit" disabled>
+            <span id="uploadBtnText">Upload Quiz</span>
+          </button>
+
+          <div class="status-message success-message" id="successMessage">
+            Quiz uploaded successfully!
+          </div>
+
+          <div class="status-message error-message" id="errorMessage">
+            <span id="errorText">Error uploading quiz.</span>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <script src="./scripts/script.js"></script>
+  </body>
 </html>
